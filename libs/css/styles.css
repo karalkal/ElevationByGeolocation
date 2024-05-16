@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+/* CSS HEX */
+:root {
+    --mimi-pink: #ffd6ffff;
+    --mauve: #e7c6ffff;
+    --mauve-2: #c8b6ffff;
+    --periwinkle: #b8c0ffff;
+    --periwinkle-2: #bbd0ffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: "Nunito Sans", sans-serif;
+    vertical-align: baseline;
+}
+
+header {
+    margin: 22px 35px;
+    background-color: var(--periwinkle-2);
+    padding: 22px;
+    border-radius: 11px;
+}
+
+table,
+th,
+td {
+    margin: 22px 35px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
+
+thead {
+    background-color: var(--periwinkle-2);
+}
+
+.method {
+    font-size: 1.3em;
+    font-weight: 800;
+    background-color: var(--mauve);
+    padding: 2px 8px;
+
+}

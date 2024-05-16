@@ -1,0 +1,79 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Elevation by latitude and longitude</title>
+	<meta name="description" content="Get elevation of geolocation from 4 different datasets">
+	<meta name="author" content="KK">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+
+	<link rel="stylesheet" href="libs/css/styles.css">
+	<link rel="stylesheet" href="libs/css/preloader.css">
+
+</head>
+
+<body>
+	<header>
+		<p id="intro">
+			This little application will display the elevation of any location on planet Earth based on its
+			geographicalcoordinates (Latitude and Longitude).
+			<br>It derives its data from <a href="http://www.geonames.org/about.html">GeoNames geographical database</a>
+			using 4 of the most popular freely available methodologies.
+		</p>
+	</header>
+
+	<main>
+		<table>
+			<thead>
+				<th>API specs</th>
+				<th>API description</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="method" colspan="2">Elevation - SRTM1</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Webservice Type : REST </p>
+						<p>Url : api.geonames.org/srtm1?</p>
+						<p>Parameters : lat,lng;</p>
+						<p>request method: GET or POST</p>
+						<p>sample area: ca 30m x 30m </p>
+					</td>
+					<td>
+						<p>Result : a single number giving the elevation in meters according to srtm1, ocean areas have
+							been
+							masked as "no data" and have been assigned a value of -32768
+						</p>
+					</td>
+
+				</tr>
+			</tbody>
+
+		</table>
+
+
+		<div>
+			<label for="lat">latitude: <input id="lat"></label>
+			<label for="lng">longitude: <input id="lng"></label>
+			<button id="getElevationData">GO!</button>
+		</div>
+
+	</main>
+
+	<div id=”preloader”></div>
+
+	<script type="application/javascript" src="libs/js/jquery-2.2.3.min.js"></script>
+	<script type="application/javascript" src="libs/js/script.js"></script>
+
+</body>
+
+</html>
