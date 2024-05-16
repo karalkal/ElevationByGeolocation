@@ -117,8 +117,15 @@ td div {
     margin: 2px 0;
 }
 
+td div:last-child {
+    border: none;
+}
+
+
 td div span:first-child {
     font-weight: 700;
+    min-width: 107px;
+
 }
 
 .method {

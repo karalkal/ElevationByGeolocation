@@ -76,9 +76,13 @@
 						<div><span>sample area:&nbsp;</span><span>ca 30m x 30m </span></div>
 					</td>
 					<td>
-						<p>Result : a single number giving the elevation in meters according to srtm1, ocean areas have
-							been masked as "no data" and have been assigned a value of -32768
-						</p>
+						<div><span>Result:&nbsp;</span><span>a single number giving the elevation in meters according to
+								srtm1, ocean areas have
+								been masked as "no data" and have been assigned a value of -32768</span>
+						</div>
+						<div><span>Example:&nbsp;</span><span>
+								http://api.geonames.org/srtm1?lat=50.01&lng=10.2&username=demo</span></div>
+
 					</td>
 					<td class="resultBox">
 						<p id="srtm1Result"> </p>
@@ -96,15 +100,24 @@
 							data from other sources such as the ASTER GDEM. </p>
 					</td>
 					<td>
-						<p>00 </p>
+						<div><span>Webservice Type:&nbsp;</span><span>REST </span></div>
+						<div><span>Url:&nbsp;</span><span>api.geonames.org/srtm3?</span></div>
+						<div><span>Parameters:&nbsp;</span><span>lat,lng;</span></div>
+						<div><span>request method:&nbsp;</span><span>GET or POST</span></div>
+						<div><span>sample area:&nbsp;</span><span>ca 90m x 90m</span></div>
+
 					</td>
 					<td>
-						<p>00
-						</p>
+						<div><span>Result:&nbsp;</span><span>a single number giving the elevation in meters according to
+								srtm3, ocean areas have been masked as "no data" and have been assigned a value of
+								-32768</span>
+						</div>
+						<div>
+							<span>Example:&nbsp;</span><span>http://api.geonames.org/srtm3?lat=50.01&lng=10.2&username=demo</span>
+						</div>
 					</td>
-					<td>
-						<p>000
-						</p>
+					<td class="resultBox">
+						<p id="srtm3Result"> </p>
 					</td>
 
 				</tr>
