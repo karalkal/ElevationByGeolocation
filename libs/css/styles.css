@@ -2,11 +2,11 @@
 
 /* CSS HEX */
 :root {
-    --mimi-pink: #ffd6ffff;
-    --mauve: #e7c6ffff;
-    --mauve-2: #c8b6ffff;
-    --periwinkle: #b8c0ffff;
-    --periwinkle-2: #bbd0ffff;
+    --dark-slate-gray: #335c67ff;
+    --vanilla: #fff3b0ff;
+    --hunyadi-yellow: #e09f3eff;
+    --auburn: #9e2a2bff;
+    --chocolate-cosmos: #540b0eff;
 }
 
 * {
@@ -18,31 +18,92 @@
     vertical-align: baseline;
 }
 
+html {
+    background-color: var(--vanilla);
+}
+
 header {
+    background-color: var(--vanilla);
     margin: 22px 35px;
-    background-color: var(--periwinkle-2);
     padding: 22px;
+    font-size: 1.25em;
+    border: 4px solid var(--chocolate-cosmos);
     border-radius: 11px;
 }
+
+form {
+    background-color: var(--hunyadi-yellow);
+    margin: 22px 35px;
+    padding: 22px;
+    font-size: 1.25em;
+    border: 4px solid var(--chocolate-cosmos);
+    border-radius: 11px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+form input {
+    padding: 8px;
+    border-radius: 11px;
+    margin: 0 8px;
+    font-size: 1.3em;
+    color: var(--dark-slate-gray);
+    font-weight: 900;
+}
+
+form input:focus {
+    outline: none;
+    background-color: var(--vanilla);
+}
+
 
 table,
 th,
 td {
     margin: 22px 35px;
-    border: 1px solid black;
+    border: 1px solid var(--dark-slate-gray);
     border-collapse: collapse;
 }
 
 
-
 thead {
-    background-color: var(--periwinkle-2);
+    background-color: var(--chocolate-cosmos);
+    color: var(--vanilla);
+}
+
+th {
+    padding: 11px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+td {
+    padding: 4px 11px;
+}
+
+th:first-child,
+td:first-child {
+    width: 40%;
+}
+
+th:last-child,
+td:last-child {
+    width: 10%;
+}
+
+
+th:nth-child(2),
+th:nth-child(3),
+td:nth-child(2),
+th:nth-child(3) {
+    width: 25%;
 }
 
 .method {
     font-size: 1.3em;
     font-weight: 800;
-    background-color: var(--mauve);
-    padding: 2px 8px;
-
+    background-color: var(--dark-slate-gray);
+    padding: 2px 0 2px 31px;
+    color: var(--hunyadi-yellow);
 }

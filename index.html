@@ -23,24 +23,41 @@
 <body>
 	<header>
 		<p id="intro">
-			This little application will display the elevation of any location on planet Earth based on its
-			geographicalcoordinates (Latitude and Longitude).
+			This little application will display the elevation in meters of any location on planet Earth based on its
+			geographical coordinates (Latitude and Longitude).
 			<br>It derives its data from <a href="http://www.geonames.org/about.html">GeoNames geographical database</a>
 			using 4 of the most popular freely available methodologies.
 		</p>
 	</header>
 
 	<main>
+
+		<form>
+			<label for="lat">latitude: <input id="lat"></label>
+			<label for="lng">longitude: <input id="lng"></label>
+			<button id="getElevationData">GO!</button>
+		</form>
+
 		<table>
 			<thead>
+				<th>method description</th>
 				<th>API specs</th>
 				<th>API description</th>
+				<th>elevation</th>
 			</thead>
 			<tbody>
 				<tr>
-					<td class="method" colspan="2">Elevation - SRTM1</td>
+					<td class="method" colspan="4">Elevation - SRTM1</td>
 				</tr>
 				<tr>
+					<td>
+						<p>The Shuttle Radar Topography Mission (SRTM) is a NASA mission conducted in 2000 to obtain
+							elevation data for most of the world. It is the current dataset of choice for digital
+							elevation model (DEM) data since it has a fairly high resolution (1 arc-second, or around 25
+							meters), has near-global coverage (from 56°S to 60°N), and is in
+							the public domain. Version 1.0 is the (almost) raw data obtained during the mission and its
+							quality isconsidered research-grade. </p>
+					</td>
 					<td>
 						<p>Webservice Type : REST </p>
 						<p>Url : api.geonames.org/srtm1?</p>
@@ -50,22 +67,43 @@
 					</td>
 					<td>
 						<p>Result : a single number giving the elevation in meters according to srtm1, ocean areas have
-							been
-							masked as "no data" and have been assigned a value of -32768
+							been masked as "no data" and have been assigned a value of -32768
+						</p>
+					</td>
+					<td>
+						<p>8888
+						</p>
+					</td>
+				</tr>
+
+
+
+				<tr>
+					<td class="method" colspan="4">Elevation - SRTM3</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Version 3.0 (aka SRTM Plus or Void Filled) removes all of the void areas by incorporating
+							data from other sources such as the ASTER GDEM. </p>
+					</td>
+					<td>
+						<p>00 </p>
+					</td>
+					<td>
+						<p>00
+						</p>
+					</td>
+					<td>
+						<p>000
 						</p>
 					</td>
 
 				</tr>
+
 			</tbody>
 
 		</table>
 
-
-		<div>
-			<label for="lat">latitude: <input id="lat"></label>
-			<label for="lng">longitude: <input id="lng"></label>
-			<button id="getElevationData">GO!</button>
-		</div>
 
 	</main>
 
