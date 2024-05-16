@@ -8,15 +8,26 @@ $(window).on('load', function () {
 
 
 $('#getElevationDataForm').submit(function (e) {
-	e.preventDefault();		// don't submit
-	let numLat = Number($('#lat').val());
-	let numLng = Number($('#lng').val());
-	console.log(numLat, numLng)
-
+	e.preventDefault();
+	let inputLat = $('#lat').val();
+	let inputLng = $('#lng').val();
+	// no empty inputs
+	if (inputLat === "" || inputLng === "") {
+		alert("empty coordinate field(s)");
+		return;
+	}
+	let numLat = Number(inputLat);
+	let numLng = Number(inputLng);
+	// no non-numeric
+	if (isNaN(numLat) || isNaN(numLng)) {
+		alert("non-numeric value(s)");
+		return;
+	}
+	// no out of range
 	if (numLat < -90 || numLat > 90 || numLng < -180 || numLng > 180) {
 		console.log(-90 < numLat, numLat > 90, -180 < numLng, numLng > 180);
-		// alert("invalid coordinates");
-		// return;
+		alert("invalid coordinates");
+		return;
 	}
 
 	$.ajax({
