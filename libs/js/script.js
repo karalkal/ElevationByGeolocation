@@ -33,7 +33,7 @@ $('#getElevationDataForm').submit(function (e) {
 	$.ajax({
 		url: "libs/php/getElevationData.php",
 		type: 'GET',
-		dataType: 'json',		// will send request to JSON endpoint anyway but can manipulate here if different format is available/required
+		dataType: 'json',		// will send request to JSON endpoint anyway but can set different format if one is available/required
 		data: {
 			lat: numLat,
 			lng: numLng
@@ -41,16 +41,9 @@ $('#getElevationDataForm').submit(function (e) {
 		success: function (result) {
 			console.log(result);
 
-			console.log(JSON.stringify(result));
-
 			if (result.status.name == "ok") {
-
-				$('#srtm1Result').html(result['data'][0]['srtm1']);
-				// $('#txtCapital').html(result['data'][0]['capital']);
-				// $('#txtLanguages').html(result['data'][0]['languages']);
-				// $('#txtPopulation').html(result['data'][0]['population']);
-				// $('#txtArea').html(result['data'][0]['areaInSqKm']);
-
+				console.log(result['data']['srtm1']);
+				$('#srtm1Result').text(result['data']['srtm1'] + " m");
 			}
 
 		},

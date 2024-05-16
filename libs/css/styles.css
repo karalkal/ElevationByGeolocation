@@ -110,10 +110,29 @@ th:nth-child(3) {
     width: 25%;
 }
 
+td div {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--dark-slate-gray);
+    margin: 2px 0;
+}
+
+td div span:first-child {
+    font-weight: 700;
+}
+
 .method {
     font-size: 1.3em;
     font-weight: 800;
     background-color: var(--dark-slate-gray);
     padding: 2px 0 2px 31px;
     color: var(--hunyadi-yellow);
+}
+
+.resultBox {
+    background-color: var(--hunyadi-yellow);
+    color: var(--chocolate-cosmos);
+    font-size: 1.7em;
+    font-weight: 900;
+    text-align: center;
 }
