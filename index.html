@@ -9,12 +9,12 @@
 	<meta name="description" content="Get elevation of geolocation from 4 different datasets">
 	<meta name="author" content="KK">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<!-- favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="libs/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="libs/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="libs/favicon/favicon-16x16.png">
 	<link rel="manifest" href="/site.webmanifest">
-
+	<!-- css -->
 	<link rel="stylesheet" href="libs/css/styles.css">
 	<link rel="stylesheet" href="libs/css/preloader.css">
 
@@ -24,18 +24,28 @@
 	<header>
 		<p id="intro">
 			This little application will display the elevation in meters of any location on planet Earth based on its
-			geographical coordinates (Latitude and Longitude).
-			<br>It derives its data from <a href="http://www.geonames.org/about.html">GeoNames geographical database</a>
-			using 4 of the most popular freely available methodologies.
+			geographical coordinates (Latitude and Longitude). <br>
+			It derives its data from <a href="http://www.geonames.org/about.html" target="_blank">GeoNames geographical
+				database</a> using 4 of the most popular freely available methodologies. <br>
+			A good website to obtain latitude/longitude data for any location is <a
+				href="https://www.gps-coordinates.net/" target="_blank"></a>. <br>
+			The valid range of latitude in degrees is -90 and +90 for the southern and northern hemisphere,
+			respectively. Longitude is in the range -180 and +180 specifying coordinates west and east of the Prime
+			Meridian, respectively. <br>
+			For reference, the Equator has a latitude of 0°, the North pole has a latitude of 90° and the South pole has
+			a latitude of -90°. <br>
+			The Prime Meridian has a longitude of 0° that goes through Greenwich, England. The International Date Line
+			(IDL) roughly follows the 180° longitude. A longitude with a positive value falls in the eastern hemisphere
+			and the negative value falls in the western hemisphere.
 		</p>
 	</header>
 
 	<main>
 
-		<form>
+		<form id="getElevationDataForm">
 			<label for="lat">latitude: <input id="lat"></label>
 			<label for="lng">longitude: <input id="lng"></label>
-			<button id="getElevationData">GO!</button>
+			<button id="getBtn">GO!</button>
 		</form>
 
 		<table>

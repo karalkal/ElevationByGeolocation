@@ -31,8 +31,8 @@ header {
     border-radius: 11px;
 }
 
-form {
-    background-color: var(--hunyadi-yellow);
+#getElevationDataForm {
+    background-color: var(--auburn);
     margin: 22px 35px;
     padding: 22px;
     font-size: 1.25em;
@@ -43,20 +43,30 @@ form {
     justify-content: space-between;
 }
 
-form input {
+#getElevationDataForm input,
+#getElevationDataForm button {
     padding: 8px;
     border-radius: 11px;
     margin: 0 8px;
     font-size: 1.3em;
-    color: var(--dark-slate-gray);
     font-weight: 900;
 }
 
-form input:focus {
-    outline: none;
+#getElevationDataForm input {
+    color: var(--dark-slate-gray);
     background-color: var(--vanilla);
+
 }
 
+#getElevationDataForm input:focus {
+    outline: none;
+    background-color: var(--hunyadi-yellow);
+}
+
+#getElevationDataForm button {
+    background-color: var(--hunyadi-yellow);
+    color: var(--chocolate-cosmos);
+}
 
 table,
 th,

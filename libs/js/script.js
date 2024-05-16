@@ -7,14 +7,25 @@ $(window).on('load', function () {
 });
 
 
-$('#getElevationData').click(function () {
+$('#getElevationDataForm').submit(function (e) {
+	e.preventDefault();		// don't submit
+	let numLat = Number($('#lat').val());
+	let numLng = Number($('#lng').val());
+	console.log(numLat, numLng)
+
+	if (numLat < -90 || numLat > 90 || numLng < -180 || numLng > 180) {
+		console.log(-90 < numLat, numLat > 90, -180 < numLng, numLng > 180);
+		// alert("invalid coordinates");
+		// return;
+	}
+
 	$.ajax({
 		url: "libs/php/getElevationData.php",
-		type: 'POST',
+		type: 'GET',
 		dataType: 'json',		// will send request to JSON endpoint anyway but can manipulate here if different format is available/required
 		data: {
-			lat: Number($('#lat').val()),
-			lng: Number($('#lng').val())
+			lat: numLat,
+			lng: numLng
 		},
 		success: function (result) {
 			console.log(result);
