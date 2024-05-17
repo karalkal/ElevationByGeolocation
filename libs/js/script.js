@@ -53,11 +53,10 @@ $('#getElevationDataForm').submit(function (e) {
 				}
 				else {
 					$('#srtm1Result')
-						.html(`Elevation 
-						<br/>for point with 
-						<br/>latitude ${result['data']['lat']} and 
-						<br/>longitude ${result['data']['lng']} is 
-						<br/><span>${result['data']['srtm1']} m</span>`);
+						.html(`<p>Elevation for point with latitude 
+						<b>${result['data']['lat']}</b> 
+						and longitude <b>${result['data']['lng']}</b> is 
+						<br/><span>${result['data']['srtm1']} m</span></p>`);
 				}
 			}
 		},
@@ -85,13 +84,12 @@ $('#getElevationDataForm').submit(function (e) {
 				}
 				else {
 					$('#cityResult')
-						.html(`<span>${result.data.toponymName}</span>
-					<br/>local name: ${result.data.name} 
-					<br/>distance: ${result.data.distance}
-					<br/>population: ${result.data.population}
-					<br/>country code: ${result.data.countryCode}`);
+						.html(`<p><span>${result.data.toponymName}</span>
+					<br/><b>local name:</b> ${result.data.name} 
+					<br/><b>distance:</b> ${result.data.distance}
+					<br/><b>population:</b> ${result.data.population}
+					<br/><b>country code:</b> ${result.data.countryCode}</p>`);
 				}
-
 			}
 		},
 
@@ -114,16 +112,19 @@ $('#getElevationDataForm').submit(function (e) {
 			if (result.status.name == "ok") {
 				console.log(result.data)
 
-				/*
-					$('#cityResult')
-						.html(`<span>${result.data.toponymName}</span>
-					<br/>local name: ${result.data.name} 
-					<br/>distance: ${result.data.distance}
-					<br/>population: ${result.data.population}
-					<br/>country code: ${result.data.countryCode}`);
-
-					*/
-
+				if (!result.status.foundWeatherStation) {
+					$('#weatherResult')
+						.html(`API did not return result for a weather station within 300 km radius of the location.`);
+				}
+				else {
+					$('#weatherResult').html(`
+					<p><b>meteo station:</b> ${result.data.stationName}
+					<br/><b>date/time:</b> ${result.data.datetime} 
+					<br/><b>temperature:</b> ${result.data.temperature}&deg;C
+					<br/><b>clouds:</b> ${result.data.clouds}
+					<br/><b>humidity:</b> ${result.data.humidity}</p>
+					`);
+				}
 
 			}
 		},

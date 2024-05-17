@@ -30,14 +30,13 @@
 			found in <a href="#footer">the footer of
 				this page.</a>
 		</p>
-		<p>1. Endpoint to get the elevation in meters of the location using one of the most
+		<p>1. The endpoint returns the elevation in meters of the selected location using one of the most
 			popular freely available methodologies.
 		</p>
-		<p>2. The endpoint returns populated place nearest to the location (max 300km distance) if one is found and
-			the app will render some basic information about it.
+		<p>2. The endpoint returns json containing data about the populated place nearest to the location (max 300km
+			distance) if one is found. The app will render some basic information about it.
 		</p>
-		<p>3. The endpoint will find populated place nearest to the location (max 300km distance) if one is found and
-			the app will render some basic information about it.
+		<p>3. The endpoint returns weather data from weather station nearby, selected properties will be rendered.
 		</p>
 	</header>
 
@@ -153,7 +152,7 @@
 								http://api.geonames.org/findNearByWeatherJSON?lat=43&lng=-2&username=demo</span>
 						</div>
 					</td>
-					<td class="resultBox" id="cityResult">
+					<td class="resultBox" id="weatherResult">
 					</td>
 				</tr>
 
