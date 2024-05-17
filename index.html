@@ -22,23 +22,21 @@
 
 <body>
 	<header>
-		<p>
-			This little application will display geographical information about any location on planet Earth based on
+		<p> This little application will display geographical information about any location on planet Earth based on
 			its coordinates (Latitude and Longitude). It derives its data from <a
 				href="http://www.geonames.org/about.html" target="_blank">GeoNames geographical
 				database.</a> Users can obtain latitude/longitude values from <a href="https://www.gps-coordinates.net/"
-				target="_blank">this website</a>. </p>
-		<p>1. This API endpoint will get the elevation in meters of the location using one of the most
-			popular freely available methodologies. The valid range of latitude in degrees is -90 and +90 for the
-			southern and northern hemisphere, respectively. Longitude is in the range -180 and +180 specifying
-			coordinates west and east of the Prime Meridian, respectively. <br>
-			For reference, the Equator has a latitude of 0°, the North pole has a latitude of 90° and the South pole has
-			a latitude of -90°. <br>
-			The Prime Meridian has a longitude of 0° that goes through Greenwich, England. The International Date Line
-			(IDL) roughly follows the 180° longitude. A longitude with a positive value falls in the eastern hemisphere
-			and the negative value falls in the western hemisphere.</p>
+				target="_blank">this website</a>. If you (like me) need a refresher of how these work, info could be
+			found in <a href="#footer">the footer of
+				this page.</a>
 		</p>
-		<p> 2. The endpoint will find populated place nearest to the location (max 300km distance) if one is found and
+		<p>1. Endpoint to get the elevation in meters of the location using one of the most
+			popular freely available methodologies.
+		</p>
+		<p>2. The endpoint returns populated place nearest to the location (max 300km distance) if one is found and
+			the app will render some basic information about it.
+		</p>
+		<p>3. The endpoint will find populated place nearest to the location (max 300km distance) if one is found and
 			the app will render some basic information about it.
 		</p>
 	</header>
@@ -59,6 +57,7 @@
 			</thead>
 			<tbody>
 
+				<!-- Elevation -->
 				<tr>
 					<td class="method" colspan="3">Elevation - SRTM1</td>
 				</tr>
@@ -73,11 +72,11 @@
 							quality is considered research-grade. </p>
 					</td>
 					<td>
-						<div><span>Webservice Type:&nbsp;</span><span>REST </span></div>
+						<div><span>Webservice:&nbsp;</span><span>REST </span></div>
 						<div><span>Url:&nbsp;</span><span>api.geonames.org/srtm1?</span></div>
 						<div><span>Parameters:&nbsp;</span><span>&#8226;&nbsp;lat<br>&#8226;&nbsp;lng;</span></div>
-						<div><span>request method:&nbsp;</span><span>GET or POST</span></div>
-						<div><span>sample area:&nbsp;</span><span>ca 30m x 30m </span></div>
+						<div><span>Req method:&nbsp;</span><span>GET or POST</span></div>
+						<div><span>Sample area:&nbsp;</span><span>ca 30m x 30m </span></div>
 						<div><span>Result:&nbsp;</span><span>a single number giving the elevation in meters according to
 								srtm1, ocean areas have
 								been masked as "no data" and have been assigned a value of -32768</span>
@@ -89,20 +88,24 @@
 					</td>
 				</tr>
 
+				<!-- City -->
+				<tr>
+					<td class="method" colspan="3">Nearest settlement with over 1000 population</td>
+				</tr>
 				<tr>
 					<td>
 						<p>Find nearby populated place / reverse geocoding. The query parameter
 							'lang' is set to 'local', hence the nearest settlement's name will be displayed in the
 							respective local language. The 'city' parameter is set to obtain only value for settlements
 							with a population of over 1000. <br>If no 'radius' parameter is provided the returned array
-							will contain only the name of the nearest toponym, if it is, i.e. radius=300 (I believe)
-							the results will be sorted by proximity to the searched location. In this app this approach
-							has been used.</p>
+							will contain only the name of the nearest toponym. If it is, i.e. radius=300, (I believe)
+							the results will be sorted by proximity to the searched location. In this app the latter
+							approach has been used.</p>
 					</td>
 					<td>
-						<div><span>Webservice Type:&nbsp;</span><span>REST </span></div>
+						<div><span>Webservice:&nbsp;</span><span>REST </span></div>
 						<div><span>Url:&nbsp;</span><span>api.geonames.org/findNearbyPlaceName?</span></div>
-						<div><span>Parameters:&nbsp;</span><span> &#8226;&nbsp;lat<br>
+						<div><span>Parameters:&nbsp;</span><span>&#8226;&nbsp;lat<br>
 								&#8226;&nbsp;lng<br>
 								&#8226;&nbsp;lang: language of returned 'name' element (the pseudo language code 'local'
 								will return
@@ -127,16 +130,49 @@
 					</td>
 				</tr>
 
-
-
-
+				<!-- Weather -->
+				<tr>
+					<td class="method" colspan="3">Most recent readings from weather station nearby</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Weather Station with most recent weather observation / reverse geocoding</p>
+					</td>
+					<td>
+						<div><span>Webservice:&nbsp;</span><span>REST </span></div>
+						<div><span>Url:&nbsp;</span><span>api.geonames.org/findNearByWeatherJSON?</span></div>
+						<div><span>Parameters:&nbsp;</span><span>&#8226;&nbsp;lat, lng: the service will return the
+								station closest to this given point (reverse geocoding)<br>
+								&#8226;&nbsp;callback : name of javascript function (optional parameter)<br>
+								&#8226;&nbsp;radius: search radius, only weather stations within this radius are
+								considered. Default is about 100km.</span></div>
+						<div><span>Result:&nbsp;</span><span> returns a weather station with the most recent weather
+								observation.</span>
+						</div>
+						<div><span>Example:&nbsp;</span><span>
+								http://api.geonames.org/findNearByWeatherJSON?lat=43&lng=-2&username=demo</span>
+						</div>
+					</td>
+					<td class="resultBox" id="cityResult">
+					</td>
+				</tr>
 
 			</tbody>
 
 		</table>
-
-
 	</main>
+
+	<footer id="footer">
+		<p>The valid range of latitude in degrees is -90 and +90 for the
+			southern and northern hemisphere, respectively. Longitude is in the range -180 and +180 specifying
+			coordinates west and east of the Prime Meridian, respectively. </p>
+		<p>
+			For reference, the Equator has a latitude of 0°, the North pole has a latitude of 90° and the South pole has
+			a latitude of -90°. </p>
+		<p>The Prime Meridian has a longitude of 0° that goes through Greenwich, England. The International Date Line
+			(IDL) roughly follows the 180° longitude. A longitude with a positive value falls in the eastern hemisphere
+			and the negative value falls in the western hemisphere.</p>
+	</footer>
 
 	<div id=”preloader”></div>
 

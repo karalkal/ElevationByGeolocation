@@ -30,6 +30,7 @@ $('#getElevationDataForm').submit(function (e) {
 		return;
 	}
 
+	// ELEVATION
 	$.ajax({
 		url: "libs/php/getElevationData.php",
 		type: 'GET',
@@ -66,11 +67,11 @@ $('#getElevationDataForm').submit(function (e) {
 		}
 	});
 
-
+	// SETTLEMENT
 	$.ajax({
 		url: "libs/php/getNearestSettlement.php",
 		type: 'GET',
-		dataType: 'json',		// will send request to JSON endpoint anyway but can set different format if one is available/required
+		dataType: 'json',
 		data: {
 			lat: numLat,
 			lng: numLng
@@ -78,7 +79,6 @@ $('#getElevationDataForm').submit(function (e) {
 
 		success: function (result) {
 			if (result.status.name == "ok") {
-				console.log(result['data']);
 				if (!result.status.foundTown) {
 					$('#cityResult')
 						.html(`API did not return result for a settlement with over 1000 population within 300 km radius of the location.`);
@@ -100,4 +100,39 @@ $('#getElevationDataForm').submit(function (e) {
 		}
 	});
 
+	// WEATHER
+	$.ajax({
+		url: "libs/php/getWeatherData.php",
+		type: 'GET',
+		dataType: 'json',
+		data: {
+			lat: numLat,
+			lng: numLng
+		},
+
+		success: function (result) {
+			if (result.status.name == "ok") {
+				console.log(result.data)
+
+				/*
+					$('#cityResult')
+						.html(`<span>${result.data.toponymName}</span>
+					<br/>local name: ${result.data.name} 
+					<br/>distance: ${result.data.distance}
+					<br/>population: ${result.data.population}
+					<br/>country code: ${result.data.countryCode}`);
+
+					*/
+
+
+			}
+		},
+
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.log(jqXHR, textStatus, errorThrown)
+		}
+	});
+
+
 });
+

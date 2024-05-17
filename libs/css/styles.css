@@ -22,7 +22,8 @@ html {
     background-color: var(--vanilla);
 }
 
-header {
+header,
+footer {
     background-color: var(--vanilla);
     margin: 22px 35px;
     padding: 22px;
@@ -30,7 +31,8 @@ header {
     border-radius: 11px;
 }
 
-header p {
+header p,
+footer p {
     font-size: 1.1em;
     margin: 8px 0 8px 11px;
     text-indent: 26px;
@@ -99,23 +101,22 @@ td {
 
 th:first-child,
 td:first-child {
-    width: 33.33%;
+    width: 26%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 48%;
 }
 
 th:last-child,
 td:last-child {
-    width: 33.33%;
-}
-
-
-th:nth-child(2),
-td:nth-child(2) {
-    width: 33.33%;
+    width: 26%;
 }
 
 td div {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     border-bottom: 1px solid var(--dark-slate-gray);
     margin: 2px 0;
 }
@@ -127,8 +128,7 @@ td div:last-child {
 
 td div span:first-child {
     font-weight: 700;
-    min-width: 107px;
-
+    min-width: 120px;
 }
 
 .method {
