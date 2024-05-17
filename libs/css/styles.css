@@ -26,9 +26,14 @@ header {
     background-color: var(--vanilla);
     margin: 22px 35px;
     padding: 22px;
-    font-size: 1.25em;
     border: 4px solid var(--chocolate-cosmos);
     border-radius: 11px;
+}
+
+header p {
+    font-size: 1.1em;
+    margin: 8px 0 8px 11px;
+    text-indent: 26px;
 }
 
 #getElevationDataForm {
@@ -94,20 +99,18 @@ td {
 
 th:first-child,
 td:first-child {
-    width: 40%;
+    width: 33.33%;
 }
 
 th:last-child,
 td:last-child {
-    width: 10%;
+    width: 33.33%;
 }
 
 
 th:nth-child(2),
-th:nth-child(3),
-td:nth-child(2),
-th:nth-child(3) {
-    width: 25%;
+td:nth-child(2) {
+    width: 33.33%;
 }
 
 td div {
@@ -139,7 +142,11 @@ td div span:first-child {
 .resultBox {
     background-color: var(--hunyadi-yellow);
     color: var(--chocolate-cosmos);
-    font-size: 1.7em;
-    font-weight: 900;
+    font-size: 1.5em;
     text-align: center;
+}
+
+.resultBox span {
+    font-weight: 900;
+    font-size: 1.7em;
 }

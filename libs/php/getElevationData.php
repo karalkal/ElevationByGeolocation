@@ -10,18 +10,18 @@ $executionStartTime = microtime(true);
 
 
 // $url = 'http://api.geonames.org/srtm1JSON?formatted=true&lat=55&lng=55&username=kurcho&style=full';
-$url1 = 'http://api.geonames.org/srtm1JSON?lat=' . $_REQUEST['lat'] . '&lng=' . $_REQUEST['lng'] . '&username=kurcho&style=full';
+$url = 'http://api.geonames.org/srtm1JSON?lat=' . $_REQUEST['lat'] . '&lng=' . $_REQUEST['lng'] . '&username=kurcho&style=full';
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_URL, $url1);
+curl_setopt($ch, CURLOPT_URL, $url);
 
-$result1 = curl_exec($ch);
+$result = curl_exec($ch);
 
 curl_close($ch);
 
-$decode = json_decode($result1, true);
+$decode = json_decode($result, true);
 
 $output['status']['code'] = "200";
 $output['status']['name'] = "ok";
@@ -34,4 +34,6 @@ $output['data']['srtm1'] = $decode['srtm1'];
 header('Content-Type: application/json; charset=UTF-8');
 
 echo json_encode($output);
+// echo $output;
+
 ?>

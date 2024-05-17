@@ -38,15 +38,31 @@ $('#getElevationDataForm').submit(function (e) {
 			lat: numLat,
 			lng: numLng
 		},
+
 		success: function (result) {
 			console.log(result);
 
 			if (result.status.name == "ok") {
 				console.log(result['data']['srtm1']);
-				$('#srtm1Result').text(result['data']['srtm1'] + " m");
+				if (result['data']['srtm1'] === -32768) {
+					$('#srtm1Result')
+						.html(`Point with 
+					<br/>latitude ${result['data']['lat']} and 
+					<br/>longitude ${result['data']['lng']} 
+					<br/>seems to be 
+					<br/><span>in the ocean</span>`);
+				}
+				else {
+					$('#srtm1Result')
+						.html(`Elevation 
+						<br/>for point with 
+						<br/>latitude ${result['data']['lat']} and 
+						<br/>longitude ${result['data']['lng']} is 
+						<br/><span>${result['data']['srtm1']} m</span>`);
+				}
 			}
-
 		},
+
 		error: function (jqXHR, textStatus, errorThrown) {
 			console.log(jqXHR, textStatus, errorThrown)
 		}
