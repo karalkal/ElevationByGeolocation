@@ -7,9 +7,6 @@ error_reporting(E_ALL);
 
 $executionStartTime = microtime(true);
 
-
-
-// $url = 'http://api.geonames.org/srtm1JSON?formatted=true&lat=55&lng=55&username=kurcho&style=full';
 $url = 'http://api.geonames.org/srtm1JSON?lat=' . $_REQUEST['lat'] . '&lng=' . $_REQUEST['lng'] . '&username=kurcho&style=full';
 
 $ch = curl_init();
