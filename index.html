@@ -28,7 +28,7 @@
 				href="http://www.geonames.org/about.html" target="_blank">GeoNames geographical
 				database.</a> Users can obtain latitude/longitude values from <a href="https://www.gps-coordinates.net/"
 				target="_blank">this website</a>. </p>
-		<p>1. The first API endpoint will display the elevation in meters of the location using one of the most
+		<p>1. This API endpoint will get the elevation in meters of the location using one of the most
 			popular freely available methodologies. The valid range of latitude in degrees is -90 and +90 for the
 			southern and northern hemisphere, respectively. Longitude is in the range -180 and +180 specifying
 			coordinates west and east of the Prime Meridian, respectively. <br>
@@ -38,7 +38,8 @@
 			(IDL) roughly follows the 180° longitude. A longitude with a positive value falls in the eastern hemisphere
 			and the negative value falls in the western hemisphere.</p>
 		</p>
-		<p> 2. Blah blah blah
+		<p> 2. The endpoint will find populated place nearest to the location (max 300km distance) if one is found and
+			the app will render some basic information about it.
 		</p>
 	</header>
 
@@ -74,7 +75,7 @@
 					<td>
 						<div><span>Webservice Type:&nbsp;</span><span>REST </span></div>
 						<div><span>Url:&nbsp;</span><span>api.geonames.org/srtm1?</span></div>
-						<div><span>Parameters:&nbsp;</span><span>lat,lng;</span></div>
+						<div><span>Parameters:&nbsp;</span><span>&#8226;&nbsp;lat<br>&#8226;&nbsp;lng;</span></div>
 						<div><span>request method:&nbsp;</span><span>GET or POST</span></div>
 						<div><span>sample area:&nbsp;</span><span>ca 30m x 30m </span></div>
 						<div><span>Result:&nbsp;</span><span>a single number giving the elevation in meters according to
@@ -85,6 +86,44 @@
 								http://api.geonames.org/srtm1?lat=50.01&lng=10.2&username=demo</span></div>
 					</td>
 					<td class="resultBox" id="srtm1Result">
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<p>Find nearby populated place / reverse geocoding. The query parameter
+							'lang' is set to 'local', hence the nearest settlement's name will be displayed in the
+							respective local language. The 'city' parameter is set to obtain only value for settlements
+							with a population of over 1000. <br>If no 'radius' parameter is provided the returned array
+							will contain only the name of the nearest toponym, if it is, i.e. radius=300 (I believe)
+							the results will be sorted by proximity to the searched location. In this app this approach
+							has been used.</p>
+					</td>
+					<td>
+						<div><span>Webservice Type:&nbsp;</span><span>REST </span></div>
+						<div><span>Url:&nbsp;</span><span>api.geonames.org/findNearbyPlaceName?</span></div>
+						<div><span>Parameters:&nbsp;</span><span> &#8226;&nbsp;lat<br>
+								&#8226;&nbsp;lng<br>
+								&#8226;&nbsp;lang: language of returned 'name' element (the pseudo language code 'local'
+								will return
+								it in local language)<br>
+								&#8226;&nbsp;radius: radius in km (optional)<br>
+								&#8226;&nbsp;maxRows: max number of rows (default 10)<br>
+								&#8226;&nbsp;style: SHORT,MEDIUM,LONG,FULL (default = MEDIUM), verbosity of returned xml
+								document<br>
+								&#8226;&nbsp;localCountry: in border areas this parameter will restrict the search on
+								the local
+								country, value=true<br>
+								&#8226;&nbsp;cities: optional filter parameter with three possible values 'cities1000',
+								'cities5000','cities15000'</span></div>
+						<div><span>Result:&nbsp;</span><span> returns the closest populated place (feature class=P) for
+								the lat/lng query as xml document. The unit of the distance element is 'km'.</span>
+						</div>
+						<div><span>Example:&nbsp;</span><span>
+								http://api.geonames.org/findNearbyPlaceNameJSON?lat=47.3&lng=9&username=demo</span>
+						</div>
+					</td>
+					<td class="resultBox" id="cityResult">
 					</td>
 				</tr>
 

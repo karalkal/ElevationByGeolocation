@@ -143,7 +143,6 @@ td div span:first-child {
     background-color: var(--hunyadi-yellow);
     color: var(--chocolate-cosmos);
     font-size: 1.5em;
-    text-align: center;
 }
 
 .resultBox span {
