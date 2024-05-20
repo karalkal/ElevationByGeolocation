@@ -6,8 +6,8 @@ $(window).on('load', function () {
 	}
 });
 
-
-$('#getElevationDataForm').submit(function (e) {
+// get Data From Latitude And Longitude
+$('#getDataFromLatAndLng').submit(function (e) {
 	e.preventDefault();
 	let inputLat = $('#lat').val();
 	let inputLng = $('#lng').val();
@@ -133,7 +133,62 @@ $('#getElevationDataForm').submit(function (e) {
 			console.log(jqXHR, textStatus, errorThrown)
 		}
 	});
+});
+
+
+
+// get Postcode 
+$('#getPostCode').submit(function (e) {
+	e.preventDefault();
+	let placename = $('#settlement').val();
+	let country = $('#country').val();
+	// no empty inputs
+	if (placename === "" || country === "") {
+		alert("blank field(s)");
+		return;
+	}
+	if (country.length !== 2) {
+		alert("country code consist of 2 letters only, refer to:\nhttps://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements");
+		return;
+	}
+
+	// SETTLEMENT
+	$.ajax({
+		url: "libs/php/getPostCode.php",
+		type: 'GET',
+		dataType: 'json',
+		data: {
+			placename,
+			country
+		},
+
+		success: function (result) {
+			console.log(result);
+
+			// if (result.status.name == "ok") {
+			// 	if (!result.status.foundTown) {
+			// 		$('#cityResult')
+			// 			.html(`API did not return result for a settlement with over 1000 population within 300 km radius of the location.`);
+			// 	}
+			// 	else {
+			// 		$('#cityResult')
+			// 			.html(`<p><span>${result.data.toponymName}</span>
+			// 		<br/><b>local name:</b> ${result.data.name} 
+			// 		<br/><b>distance:</b> ${result.data.distance}
+			// 		<br/><b>population:</b> ${result.data.population}
+			// 		<br/><b>country code:</b> ${result.data.countryCode}</p>`);
+			// 	}
+			// }
+		},
+
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.log(jqXHR, textStatus, errorThrown)
+		}
+	});
 
 
 });
+
+
+
 

@@ -41,8 +41,8 @@
 	</header>
 
 	<main>
-
-		<form id="getElevationDataForm">
+		<!-- LATITUDE AND LONGITUDE DATA -->
+		<form id="getDataFromLatAndLng" class="userInputForm">
 			<label for="lat">latitude: <input id="lat"></label>
 			<label for="lng">longitude: <input id="lng"></label>
 			<button id="getBtn">GO!</button>
@@ -60,7 +60,6 @@
 				<tr>
 					<td class="method" colspan="3">Elevation - SRTM1</td>
 				</tr>
-
 				<tr>
 					<td>
 						<p>The Shuttle Radar Topography Mission (SRTM) is a NASA mission conducted in 2000 to obtain
@@ -160,6 +159,16 @@
 
 		</table>
 	</main>
+
+
+	<!-- POSTCODE DATA-->
+	<form id="getPostCode" class="userInputForm">
+		<label for="settlement">settlement: <input id="settlement"></label>
+		<label for="country">country (by <a
+				href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements"
+				target="_blank">ISO-3166 alpha2</a> code): <input id="country"></label>
+		<button id="getBtn">GO!</button>
+	</form>
 
 	<footer id="footer">
 		<p>The valid range of latitude in degrees is -90 and +90 for the

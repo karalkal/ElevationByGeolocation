@@ -38,7 +38,7 @@ footer p {
     text-indent: 26px;
 }
 
-#getElevationDataForm {
+.userInputForm {
     background-color: var(--auburn);
     margin: 22px 35px;
     padding: 22px;
@@ -50,8 +50,8 @@ footer p {
     justify-content: space-between;
 }
 
-#getElevationDataForm input,
-#getElevationDataForm button {
+.userInputForm input,
+.userInputForm button {
     padding: 8px;
     border-radius: 11px;
     margin: 0 8px;
@@ -59,18 +59,18 @@ footer p {
     font-weight: 900;
 }
 
-#getElevationDataForm input {
+.userInputForm input {
     color: var(--dark-slate-gray);
     background-color: var(--vanilla);
 
 }
 
-#getElevationDataForm input:focus {
+.userInputForm input:focus {
     outline: none;
     background-color: var(--hunyadi-yellow);
 }
 
-#getElevationDataForm button {
+.userInputForm button {
     background-color: var(--hunyadi-yellow);
     color: var(--chocolate-cosmos);
 }
