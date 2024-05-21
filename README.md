@@ -11,7 +11,7 @@
 3. PHP (cURL to make HTTP requests)
 4. jQuery (event handling, tree traversal and manipulation, rendering data received from the back end)
 
-## Wokflow
+## Wokflow (of first functionality)
 
 - Info on the page itself outlines its functionality
 - User fills in the form inputs
