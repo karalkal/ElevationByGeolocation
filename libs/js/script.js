@@ -136,19 +136,20 @@ $('#getDataFromLatAndLng').submit(function (e) {
 });
 
 
-
 // get Postcode 
-$('#getPostCode').submit(function (e) {
+$('#getPostCodeForm').submit(function (e) {
 	e.preventDefault();
 	let placename = $('#settlement').val();
 	let country = $('#country').val();
+
+	console.log(placename, country)
 	// no empty inputs
 	if (placename === "" || country === "") {
 		alert("blank field(s)");
 		return;
 	}
 	if (country.length !== 2) {
-		alert("country code consist of 2 letters only, refer to:\nhttps://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements");
+		alert("country codes consist of 2 letters only,\nplease refer to:\nhttps://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements");
 		return;
 	}
 
@@ -165,20 +166,22 @@ $('#getPostCode').submit(function (e) {
 		success: function (result) {
 			console.log(result);
 
-			// if (result.status.name == "ok") {
-			// 	if (!result.status.foundTown) {
-			// 		$('#cityResult')
-			// 			.html(`API did not return result for a settlement with over 1000 population within 300 km radius of the location.`);
-			// 	}
-			// 	else {
-			// 		$('#cityResult')
-			// 			.html(`<p><span>${result.data.toponymName}</span>
-			// 		<br/><b>local name:</b> ${result.data.name} 
-			// 		<br/><b>distance:</b> ${result.data.distance}
-			// 		<br/><b>population:</b> ${result.data.population}
-			// 		<br/><b>country code:</b> ${result.data.countryCode}</p>`);
-			// 	}
-			// }
+			if (result.status.name == "ok") {
+				if (!result.status.foundPostCode) {
+					$('#postcodeResultGrid')
+						.empty()
+						.append(`<h4>API did not return postcode data for selected location.</h4>`);
+				}
+				else {
+					$('#postcodeResultGrid').empty();
+					result.data.forEach(element => {
+						$('#postcodeResultGrid')
+							.append(`<li><br/><b>Place Name:</b> ${element.placeName}
+									<br/><b>adminName2:</b> ${element.adminName2}
+									<br/><b>Post Code:</b> ${element.postalCode}</li>`);
+					});
+				}
+			}
 		},
 
 		error: function (jqXHR, textStatus, errorThrown) {

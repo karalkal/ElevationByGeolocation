@@ -76,62 +76,62 @@ footer p {
 }
 
 table,
-th,
-td {
+table th,
+table td {
     margin: 22px 35px;
     border: 1px solid var(--dark-slate-gray);
     border-collapse: collapse;
 }
 
 
-thead {
+table thead {
     background-color: var(--chocolate-cosmos);
     color: var(--vanilla);
 }
 
-th {
+table th {
     padding: 11px;
     font-size: 1.2em;
     font-weight: 600;
 }
 
-td {
+table td {
     padding: 4px 11px;
 }
 
-th:first-child,
-td:first-child {
+table th:first-child,
+table td:first-child {
     width: 26%;
 }
 
-th:nth-child(2),
-td:nth-child(2) {
+table th:nth-child(2),
+table td:nth-child(2) {
     width: 48%;
 }
 
-th:last-child,
-td:last-child {
+table th:last-child,
+table td:last-child {
     width: 26%;
 }
 
-td div {
+table td div {
     display: flex;
     justify-content: flex-start;
     border-bottom: 1px solid var(--dark-slate-gray);
     margin: 2px 0;
 }
 
-td div:last-child {
+table td div:last-child {
     border: none;
 }
 
 
-td div span:first-child {
+table td div span:first-child {
     font-weight: 700;
     min-width: 130px;
 }
 
-.method {
+table .titleAPI {
     font-size: 1.3em;
     font-weight: 800;
     background-color: var(--dark-slate-gray);
@@ -139,13 +139,86 @@ td div span:first-child {
     color: var(--hunyadi-yellow);
 }
 
-.resultBox {
+table .resultBox {
     background-color: var(--hunyadi-yellow);
     color: var(--chocolate-cosmos);
     font-size: 1.25em;
 }
 
-.resultBox span {
+table .resultBox span {
     font-weight: 900;
     font-size: 1.43em;
+}
+
+.divGetPostCode {
+    margin: 22px 35px;
+    border: 1px solid var(--dark-slate-gray);
+}
+
+.divGetPostCode .titleAPI {
+    font-size: 1.3em;
+    font-weight: 800;
+    background-color: var(--dark-slate-gray);
+    padding: 2px 0 2px 31px;
+    color: var(--hunyadi-yellow);
+}
+
+.divGetPostCode .url-and-result {
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid var(--dark-slate-gray);
+    margin: 2px 0;
+    padding: 2px 0 2px 31px;
+}
+
+
+.divGetPostCode .url-and-result span:first-child {
+    font-weight: 700;
+    min-width: 130px;
+}
+
+.paramsHeading {
+    margin: 2px 0;
+    padding: 2px 0 2px 31px;
+}
+
+.paramsGrid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.paramsGrid div {
+    padding: 4px 0 4px 31px;
+    border-bottom: 1px solid var(--dark-slate-gray);
+    font-size: .88em;
+}
+
+.paramsGrid div:nth-child(3n+1) {
+    padding: 4px 0 4px 44px;
+}
+
+.paramsGrid div:last-child {
+    border-bottom: none;
+}
+
+#postcodeResult {
+    min-height: 130px;
+    background-color: var(--auburn);
+}
+
+#postcodeResult h4 {
+    font-size: 1.5em;
+    padding: 2px 0 2px 31px;
+
+}
+
+#postcodeResultGrid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+#postcodeResultGrid li {
+    background-color: var(--hunyadi-yellow);
+    list-style: none;
+    margin: 8px;
 }

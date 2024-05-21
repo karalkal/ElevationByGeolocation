@@ -5,8 +5,8 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Elevation by latitude and longitude</title>
-	<meta name="description" content="Get elevation of geolocation from 4 different datasets">
+	<title>Utilizing AJAX-PHP-CURL-JSON</title>
+	<meta name="description" content="Get data from GeoNames API">
 	<meta name="author" content="KK">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- favicon -->
@@ -58,7 +58,7 @@
 
 				<!-- Elevation -->
 				<tr>
-					<td class="method" colspan="3">Elevation - SRTM1</td>
+					<td class="titleAPI" colspan="3">Elevation - SRTM1</td>
 				</tr>
 				<tr>
 					<td>
@@ -88,7 +88,7 @@
 
 				<!-- City -->
 				<tr>
-					<td class="method" colspan="3">Nearest settlement with over 1000 population</td>
+					<td class="titleAPI" colspan="3">Nearest settlement with over 1000 population</td>
 				</tr>
 				<tr>
 					<td>
@@ -130,7 +130,7 @@
 
 				<!-- Weather -->
 				<tr>
-					<td class="method" colspan="3">Most recent readings from weather station nearby</td>
+					<td class="titleAPI" colspan="3">Most recent readings from weather station nearby</td>
 				</tr>
 				<tr>
 					<td>
@@ -162,7 +162,7 @@
 
 
 	<!-- POSTCODE DATA-->
-	<form id="getPostCode" class="userInputForm">
+	<form id="getPostCodeForm" class="userInputForm">
 		<label for="settlement">settlement: <input id="settlement"></label>
 		<label for="country">country (by <a
 				href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements"
@@ -170,15 +170,89 @@
 		<button id="getBtn">GO!</button>
 	</form>
 
+	<div class="divGetPostCode">
+		<h3 class="titleAPI">Post Code Search (limited to max. 8 results)</h3>
+		<div class="url-and-result"><span>Url:&nbsp;</span><span>api.geonames.org/postalCodeSearch?</span>
+		</div>
+		<div class="url-and-result"><span>Result:&nbsp;</span><span> returns a list of postal codes and places for the
+				placename/postalcode
+				query as json document. For the US the first returned zip code is determined using zip code area shapes,
+				the following zip codes are based on the centroid. For all other supported countries all returned postal
+				codes are based on
+				centroids.</span>
+		</div>
+		<h4 class="paramsHeading">Parameters:</h4>
+		<div class="paramsGrid">
+			<div>Parameter</div>
+			<div>Value</div>
+			<div>Description</div>
+			<div>postalcode</div>
+			<div>string (postalcode or placename required)</div>
+			<div>postal code</div>
+			<div>postalcode_startsWith</div>
+			<div>string</div>
+			<div>the first characters or letters of a postal code</div>
+			<div>placename</div>
+			<div>string (postalcode or placename required)</div>
+			<div> all fields : placename,postal code, country, admin name (Important:urlencoded utf8)</div>
+			<div>placename_startsWith</div>
+			<div> string</div>
+			<div>the first characters of a place name</div>
+			<div>country</div>
+			<div>string : country code, ISO-3166 (optional)</div>
+			<div>Default is all countries. The country parameter may occur more than once, example:
+				country=FR&country=GP</div>
+			<div>countryBias</div>
+			<div> string</div>
+			<div>records from the countryBias are listed first</div>
+			<div>maxRows</div>
+			<div> integer (optional)</div>
+			<div>the maximal number of rows in the document returned by the service. Default is 10</div>
+			<div>style</div>
+			<div>string SHORT,MEDIUM,LONG,FULL (optional)</div>
+			<div>verbosity of returned xml document, default = MEDIUM</div>
+			<div>operator</div>
+			<div>string AND,OR (optional)</div>
+			<div>the operator 'AND' searches for all terms in the placename parameter, the operator 'OR' searches
+				for any term, default = AND</div>
+			<div>charset</div>
+			<div> string (optional)</div>
+			<div>default is 'UTF8', defines the encoding used for the document returned by the web service.</div>
+			<div>isReduced</div>
+			<div> true or false (optional)</div>
+			<div>default is 'false', when set to 'true' only the UK outer codes respectivel the NL 4-digits are
+				returned. Attention: the default value on the commercial servers is currently set to 'true'. It will be
+				changed later to 'false'.</div>
+			<div>east,west,north,south</div>
+			<div> float (optional)</div>
+			<div>bounding box, only features within the box are returned</div>
+		</div>
+
+		<ul id="postcodeResult">
+			<h4>Results will appear below:</h4>
+			<div id="postcodeResultGrid"></div>
+		</ul>
+	</div>
+
+
+
+
+
+
+
+
 	<footer id="footer">
 		<p>The valid range of latitude in degrees is -90 and +90 for the
 			southern and northern hemisphere, respectively. Longitude is in the range -180 and +180 specifying
 			coordinates west and east of the Prime Meridian, respectively. </p>
 		<p>
-			For reference, the Equator has a latitude of 0°, the North pole has a latitude of 90° and the South pole has
+			For reference, the Equator has a latitude of 0°, the North pole has a latitude of 90° and the South pole
+			has
 			a latitude of -90°. </p>
-		<p>The Prime Meridian has a longitude of 0° that goes through Greenwich, England. The International Date Line
-			(IDL) roughly follows the 180° longitude. A longitude with a positive value falls in the eastern hemisphere
+		<p>The Prime Meridian has a longitude of 0° that goes through Greenwich, England. The International Date
+			Line
+			(IDL) roughly follows the 180° longitude. A longitude with a positive value falls in the eastern
+			hemisphere
 			and the negative value falls in the western hemisphere.</p>
 	</footer>
 
