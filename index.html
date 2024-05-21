@@ -42,12 +42,6 @@
 
 	<main>
 		<!-- LATITUDE AND LONGITUDE DATA -->
-		<form id="getDataFromLatAndLng" class="userInputForm">
-			<label for="lat">latitude: <input id="lat"></label>
-			<label for="lng">longitude: <input id="lng"></label>
-			<button id="getBtn">GO!</button>
-		</form>
-
 		<table>
 			<thead>
 				<th>API description</th>
@@ -154,106 +148,144 @@
 					<td class="resultBox" id="weatherResult">
 					</td>
 				</tr>
+				<tr>
+					<td class="formContainer" colspan="3">
+						<form id="getDataFromLatAndLng" class="userInputForm">
+							<label for="lat">latitude: <input id="lat"></label>
+							<label for="lng">longitude: <input id="lng"></label>
+							<button id="getBtn">GO!</button>
+						</form>
+					</td>
+
+				</tr>
 
 			</tbody>
 
 		</table>
+
+		<!-- POSTCODE DATA-->
+		<div class="divGetPostCode">
+			<h3 class="titleAPI">Post Code Search (limited to max. 8 results)</h3>
+			<div class="url-and-result"><span>Url:&nbsp;</span><span>api.geonames.org/postalCodeSearchJSON?</span>
+			</div>
+			<div class="url-and-result"><span>Result:&nbsp;</span><span> returns a list of postal codes and places for
+					the
+					placename/postalcode
+					query as json document. For the US the first returned zip code is determined using zip code area
+					shapes,
+					the following zip codes are based on the centroid. For all other supported countries all returned
+					postal
+					codes are based on
+					centroids.</span>
+			</div>
+			<h4 class="paramsHeading">Parameters:</h4>
+			<div class="paramsGrid">
+				<div>Parameter</div>
+				<div>Value</div>
+				<div>Description</div>
+				<div>postalcode</div>
+				<div>string (postalcode or placename required)</div>
+				<div>postal code</div>
+				<div>postalcode_startsWith</div>
+				<div>string</div>
+				<div>the first characters or letters of a postal code</div>
+				<div>placename</div>
+				<div>string (postalcode or placename required)</div>
+				<div> all fields : placename,postal code, country, admin name (Important:urlencoded utf8)</div>
+				<div>placename_startsWith</div>
+				<div> string</div>
+				<div>the first characters of a place name</div>
+				<div>country</div>
+				<div>string : country code, ISO-3166 (optional)</div>
+				<div>Default is all countries. The country parameter may occur more than once, example:
+					country=FR&country=GP</div>
+				<div>countryBias</div>
+				<div> string</div>
+				<div>records from the countryBias are listed first</div>
+				<div>maxRows</div>
+				<div> integer (optional)</div>
+				<div>the maximal number of rows in the document returned by the service. Default is 10</div>
+				<div>style</div>
+				<div>string SHORT,MEDIUM,LONG,FULL (optional)</div>
+				<div>verbosity of returned xml document, default = MEDIUM</div>
+				<div>operator</div>
+				<div>string AND,OR (optional)</div>
+				<div>the operator 'AND' searches for all terms in the placename parameter, the operator 'OR' searches
+					for any term, default = AND</div>
+				<div>charset</div>
+				<div> string (optional)</div>
+				<div>default is 'UTF8', defines the encoding used for the document returned by the web service.</div>
+				<div>isReduced</div>
+				<div> true or false (optional)</div>
+				<div>default is 'false', when set to 'true' only the UK outer codes respectivel the NL 4-digits are
+					returned. Attention: the default value on the commercial servers is currently set to 'true'. It will
+					be
+					changed later to 'false'.</div>
+				<div>east,west,north,south</div>
+				<div> float (optional)</div>
+				<div>bounding box, only features within the box are returned</div>
+			</div>
+
+			<div class="formContainer">
+				<form id="getPostCodeForm" class="userInputForm ">
+					<label for="settlement">settlement: <input id="settlement"></label>
+					<label for="country">country (by <a
+							href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements"
+							target="_blank">ISO-3166 alpha2</a> code): <input id="country"></label>
+					<button id="getBtn">GO!</button>
+				</form>
+
+				<ul class="ulResult">
+					<h4 class="resultHeading">Results appear here:</h4>
+					<div id="postcodeResultGrid"></div>
+				</ul>
+			</div>
+		</div>
+
+
+		<!-- NEIGHBOURS DATA-->
+		<div class="divGetPostCode">
+			<h3 class="titleAPI">County's Neighbours Search</h3>
+			<div class="url-and-result"><span>Url:&nbsp;</span><span> api.geonames.org/neighboursJSON?</span>
+			</div>
+			<div class="url-and-result"><span>Result:&nbsp;</span><span> returns the neighbours of a toponym, currently
+					only
+					implemented for countries.</span>
+			</div>
+			<h4 class="paramsHeading">Parameters:</h4>
+			<div class="url-and-result"><span>geonameId&nbsp;</span><span> the geonameId for the neighbours (country or
+					ADM)</span> </div>
+			<div class="url-and-result"><span>country&nbsp;</span><span> the country code (alternative parameter instead
+					of
+					the geonameId)</span> </div>
+
+			<div class="formContainer">
+				<form id="getNeighboursForm" class="userInputForm">
+					<label for="country">country (by <a
+							href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements"
+							target="_blank">ISO-3166 alpha2</a> code): <input id="state"></label>
+					<button id="getBtn">GO!</button>
+				</form>
+
+				<ul class="ulResult">
+					<h4 class="resultHeading">Results appear here:</h4>
+					<div id="neighbourResultGrid"></div>
+				</ul>
+
+			</div>
+		</div>
 	</main>
-
-
-	<!-- POSTCODE DATA-->
-	<form id="getPostCodeForm" class="userInputForm">
-		<label for="settlement">settlement: <input id="settlement"></label>
-		<label for="country">country (by <a
-				href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements"
-				target="_blank">ISO-3166 alpha2</a> code): <input id="country"></label>
-		<button id="getBtn">GO!</button>
-	</form>
-
-	<ul id="postcodeResult">
-		<h4>Results appear here:</h4>
-		<div id="postcodeResultGrid"></div>
-	</ul>
-
-	<div class="divGetPostCode">
-		<h3 class="titleAPI">Post Code Search (limited to max. 8 results)</h3>
-		<div class="url-and-result"><span>Url:&nbsp;</span><span>api.geonames.org/postalCodeSearch?</span>
-		</div>
-		<div class="url-and-result"><span>Result:&nbsp;</span><span> returns a list of postal codes and places for the
-				placename/postalcode
-				query as json document. For the US the first returned zip code is determined using zip code area shapes,
-				the following zip codes are based on the centroid. For all other supported countries all returned postal
-				codes are based on
-				centroids.</span>
-		</div>
-		<h4 class="paramsHeading">Parameters:</h4>
-		<div class="paramsGrid">
-			<div>Parameter</div>
-			<div>Value</div>
-			<div>Description</div>
-			<div>postalcode</div>
-			<div>string (postalcode or placename required)</div>
-			<div>postal code</div>
-			<div>postalcode_startsWith</div>
-			<div>string</div>
-			<div>the first characters or letters of a postal code</div>
-			<div>placename</div>
-			<div>string (postalcode or placename required)</div>
-			<div> all fields : placename,postal code, country, admin name (Important:urlencoded utf8)</div>
-			<div>placename_startsWith</div>
-			<div> string</div>
-			<div>the first characters of a place name</div>
-			<div>country</div>
-			<div>string : country code, ISO-3166 (optional)</div>
-			<div>Default is all countries. The country parameter may occur more than once, example:
-				country=FR&country=GP</div>
-			<div>countryBias</div>
-			<div> string</div>
-			<div>records from the countryBias are listed first</div>
-			<div>maxRows</div>
-			<div> integer (optional)</div>
-			<div>the maximal number of rows in the document returned by the service. Default is 10</div>
-			<div>style</div>
-			<div>string SHORT,MEDIUM,LONG,FULL (optional)</div>
-			<div>verbosity of returned xml document, default = MEDIUM</div>
-			<div>operator</div>
-			<div>string AND,OR (optional)</div>
-			<div>the operator 'AND' searches for all terms in the placename parameter, the operator 'OR' searches
-				for any term, default = AND</div>
-			<div>charset</div>
-			<div> string (optional)</div>
-			<div>default is 'UTF8', defines the encoding used for the document returned by the web service.</div>
-			<div>isReduced</div>
-			<div> true or false (optional)</div>
-			<div>default is 'false', when set to 'true' only the UK outer codes respectivel the NL 4-digits are
-				returned. Attention: the default value on the commercial servers is currently set to 'true'. It will be
-				changed later to 'false'.</div>
-			<div>east,west,north,south</div>
-			<div> float (optional)</div>
-			<div>bounding box, only features within the box are returned</div>
-		</div>
-	</div>
-
-
-
-
-
-
 
 
 	<footer id="footer">
 		<p>The valid range of latitude in degrees is -90 and +90 for the
 			southern and northern hemisphere, respectively. Longitude is in the range -180 and +180 specifying
 			coordinates west and east of the Prime Meridian, respectively. </p>
-		<p>
-			For reference, the Equator has a latitude of 0°, the North pole has a latitude of 90° and the South pole
-			has
-			a latitude of -90°. </p>
+		<p>For reference, the Equator has a latitude of 0°, the North pole has a latitude of 90° and the South pole
+			has a latitude of -90°. </p>
 		<p>The Prime Meridian has a longitude of 0° that goes through Greenwich, England. The International Date
-			Line
-			(IDL) roughly follows the 180° longitude. A longitude with a positive value falls in the eastern
-			hemisphere
-			and the negative value falls in the western hemisphere.</p>
+			Line (IDL) roughly follows the 180° longitude. A longitude with a positive value falls in the eastern
+			hemisphere and the negative value falls in the western hemisphere.</p>
 	</footer>
 
 	<div id=”preloader”></div>

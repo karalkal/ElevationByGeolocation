@@ -40,9 +40,8 @@ footer p {
 
 .userInputForm {
     background-color: var(--auburn);
-    margin: 22px 35px;
+    margin: 17px;
     padding: 22px;
-    font-size: 1.25em;
     border: 4px solid var(--chocolate-cosmos);
     border-radius: 11px;
     display: flex;
@@ -55,7 +54,6 @@ footer p {
     padding: 8px;
     border-radius: 11px;
     margin: 0 8px;
-    font-size: 1.3em;
     font-weight: 900;
 }
 
@@ -131,11 +129,12 @@ table td div span:first-child {
     min-width: 130px;
 }
 
-table .titleAPI {
+table .titleAPI,
+.formContainer {
     font-size: 1.3em;
     font-weight: 800;
     background-color: var(--dark-slate-gray);
-    padding: 2px 0 2px 31px;
+    padding: 2px 31px 2px 31px;
     color: var(--hunyadi-yellow);
 }
 
@@ -151,7 +150,7 @@ table .resultBox span {
 }
 
 .divGetPostCode {
-    margin: 22px 35px;
+    margin: 44px 35px 22px;
     border: 1px solid var(--dark-slate-gray);
 }
 
@@ -197,20 +196,17 @@ table .resultBox span {
     padding: 4px 0 4px 44px;
 }
 
-.paramsGrid div:last-child {
-    border-bottom: none;
-}
-
-#postcodeResult {
+.ulResult {
     min-height: 130px;
-    background-color: var(--auburn);
-    margin: 22px 35px;
+    background-color: var(--hunyadi-yellow);
+    margin: 17px;
     padding: 11 px22px;
-    border: 4px solid var(--chocolate-cosmos);
+    border: 4px solid var(--dark-slate-gray);
     border-radius: 11px;
 }
 
-#postcodeResult h4 {
+.resultHeading {
+    color: var(--dark-slate-gray);
     text-align: center;
     font-size: 1.5em;
     padding: 2px 0 2px 31px;
@@ -221,8 +217,15 @@ table .resultBox span {
     grid-template-columns: auto auto auto auto;
 }
 
-#postcodeResultGrid li {
-    background-color: var(--hunyadi-yellow);
+#neighbourResult {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+#postcodeResultGrid li,
+#neighbourResult li {
+    background-color: var(--dark-slate-gray);
+    color: var(--vanilla);
     list-style: none;
     margin: 8px;
     padding: 8px;

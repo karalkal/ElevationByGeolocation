@@ -125,7 +125,6 @@ $('#getDataFromLatAndLng').submit(function (e) {
 					<br/><b>humidity:</b> ${result.data.humidity}</p>
 					`);
 				}
-
 			}
 		},
 
@@ -141,19 +140,17 @@ $('#getPostCodeForm').submit(function (e) {
 	e.preventDefault();
 	let placename = $('#settlement').val();
 	let country = $('#country').val();
-
-	console.log(placename, country)
 	// no empty inputs
 	if (placename === "" || country === "") {
 		alert("blank field(s)");
 		return;
 	}
+	// valid code is 2 char len
 	if (country.length !== 2) {
 		alert("country codes consist of 2 letters only,\nplease refer to:\nhttps://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements");
 		return;
 	}
 
-	// SETTLEMENT
 	$.ajax({
 		url: "libs/php/getPostCode.php",
 		type: 'GET',
@@ -169,7 +166,7 @@ $('#getPostCodeForm').submit(function (e) {
 				if (!result.status.foundPostCode) {
 					$('#postcodeResultGrid')
 						.empty()
-						.append(`<h4>API did not return postcode data for selected location.</h4>`);
+						.append(`<h4 class="resultHeading">API did not return postcode data for selected location.</h4>`);
 				}
 				else {
 					$('#postcodeResultGrid').empty();
@@ -187,6 +184,59 @@ $('#getPostCodeForm').submit(function (e) {
 			console.log(jqXHR, textStatus, errorThrown)
 		}
 	});
+});
+
+
+// get Neighbours 
+$('#getNeighboursForm').submit(function (e) {
+	e.preventDefault();
+	let country = $('#state').val();
+	console.log(country)
+	// no empty inputs
+	if (country === "") {
+		alert("blank field(s)");
+		return;
+	}
+	// valid code is 2 char len
+	if (country.length !== 2) {
+		alert("country codes consist of 2 letters only,\nplease refer to:\nhttps://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements");
+		return;
+	}
+
+	$.ajax({
+		url: "libs/php/getNeighbours.php",
+		type: 'GET',
+		dataType: 'json',
+		data: {
+			country
+		},
+
+		success: function (result) {
+			console.log(result);
+			// if (result.status.name == "ok") {
+			// 	if (!result.status.foundPostCode) {
+			// 		$('#neighbourResultGrid')
+			// 			.empty()
+			// 			.append(`<h4 class="resultHeading">API did not return postcode data for selected location.</h4>`);
+			// 	}
+			// 	else {
+			// 		$('#neighbourResultGrid').empty();
+			// 		result.data.forEach(element => {
+			// 			$('#neighbourResultGrid')
+			// 				.append(`<li><b>Place Name:</b> ${element.placeName}
+			// 						<br/><b>adminName2:</b> ${element.adminName2}
+			// 						<br/><b>Post Code:</b> ${element.postalCode}</li>`);
+			// 		});
+			// 	}
+			// }
+		},
+
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.log(jqXHR, textStatus, errorThrown)
+		}
+	});
+
+
 
 
 });
