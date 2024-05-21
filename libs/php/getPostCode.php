@@ -30,8 +30,9 @@ $output['status']['returnedIn'] = intval((microtime(true) - $executionStartTime)
 if (sizeof($decode['postalCodes']) > 0) {
     $output['data'] = $decode['postalCodes'];
     $output['status']['foundPostCode'] = true;
-} else
+} else {
     $output['status']['foundPostCode'] = false;
+}
 
 header('Content-Type: application/json; charset=UTF-8');
 

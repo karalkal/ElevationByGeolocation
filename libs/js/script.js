@@ -172,9 +172,9 @@ $('#getPostCodeForm').submit(function (e) {
 					$('#postcodeResultGrid').empty();
 					result.data.forEach(element => {
 						$('#postcodeResultGrid')
-							.append(`<li><b>Place Name:</b> ${element.placeName}
-									<br/><b>adminName2:</b> ${element.adminName2}
-									<br/><b>Post Code:</b> ${element.postalCode}</li>`);
+							.append(`<li><p>placeName: </p><p>${element.placeName}</p>
+									<p>adminName2: </p><p>${element.adminName2}</p>
+									<p>postalCode: </p><p>${element.postalCode}</p></li>`);
 					});
 				}
 			}
@@ -212,23 +212,27 @@ $('#getNeighboursForm').submit(function (e) {
 		},
 
 		success: function (result) {
-			console.log(result);
-			// if (result.status.name == "ok") {
-			// 	if (!result.status.foundPostCode) {
-			// 		$('#neighbourResultGrid')
-			// 			.empty()
-			// 			.append(`<h4 class="resultHeading">API did not return postcode data for selected location.</h4>`);
-			// 	}
-			// 	else {
-			// 		$('#neighbourResultGrid').empty();
-			// 		result.data.forEach(element => {
-			// 			$('#neighbourResultGrid')
-			// 				.append(`<li><b>Place Name:</b> ${element.placeName}
-			// 						<br/><b>adminName2:</b> ${element.adminName2}
-			// 						<br/><b>Post Code:</b> ${element.postalCode}</li>`);
-			// 		});
-			// 	}
-			// }
+			if (result.status.name == "ok") {
+				if (!result.status.foundNeighbours) {
+					$('#neighbourResultGrid')
+						.empty()
+						.append(`<h4 class="resultHeading">API did not return neighbours data for selected location.</h4>`);
+				}
+				else {
+					console.log(result.data);
+
+					$('#neighbourResultGrid').empty();
+					result.data.forEach(element => {
+						// 	console.log(element.countryCode, element.countryName, element.population)
+						// })
+
+						$('#neighbourResultGrid')
+							.append(`<li><p>countryCode: </p><p>${element.countryCode}</p>
+									<p>countryName: </p><p>${element.countryName}</p>
+									<p>population: </p><p>${element.population}</p></li>`);
+					});
+				}
+			}
 		},
 
 		error: function (jqXHR, textStatus, errorThrown) {

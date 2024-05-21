@@ -212,22 +212,33 @@ table .resultBox span {
     padding: 2px 0 2px 31px;
 }
 
-#postcodeResultGrid {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-}
 
-#neighbourResult {
+#postcodeResultGrid,
+#neighbourResultGrid {
     display: grid;
     grid-template-columns: auto auto;
 }
 
 #postcodeResultGrid li,
-#neighbourResult li {
+#neighbourResultGrid li {
+    display: grid;
+    grid-template-columns: 32% 68%;
     background-color: var(--dark-slate-gray);
     color: var(--vanilla);
     list-style: none;
     margin: 8px;
     padding: 8px;
     border-radius: 11px;
+    font-weight: 400;
+    font-size: .8em;
+}
+
+#postcodeResultGrid li p:nth-child(2),
+#postcodeResultGrid li p:nth-child(4),
+#postcodeResultGrid li p:nth-child(6),
+#neighbourResultGrid li p:nth-child(2),
+#neighbourResultGrid li p:nth-child(4),
+#neighbourResultGrid li p:nth-child(6) {
+    font-weight: 600;
+    font-size: 1.1em;
 }

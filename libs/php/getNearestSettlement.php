@@ -28,8 +28,9 @@ $output['status']['returnedIn'] = intval((microtime(true) - $executionStartTime)
 if (sizeof($decode['geonames']) > 0) {
     $output['data'] = $decode['geonames'][0];
     $output['status']['foundTown'] = true;
-} else
+} else {
     $output['status']['foundTown'] = false;
+}
 
 
 header('Content-Type: application/json; charset=UTF-8');
