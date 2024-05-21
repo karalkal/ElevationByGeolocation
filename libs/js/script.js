@@ -164,8 +164,7 @@ $('#getPostCodeForm').submit(function (e) {
 		},
 
 		success: function (result) {
-			console.log(result);
-
+			// console.log(result);
 			if (result.status.name == "ok") {
 				if (!result.status.foundPostCode) {
 					$('#postcodeResultGrid')
@@ -176,7 +175,7 @@ $('#getPostCodeForm').submit(function (e) {
 					$('#postcodeResultGrid').empty();
 					result.data.forEach(element => {
 						$('#postcodeResultGrid')
-							.append(`<li><br/><b>Place Name:</b> ${element.placeName}
+							.append(`<li><b>Place Name:</b> ${element.placeName}
 									<br/><b>adminName2:</b> ${element.adminName2}
 									<br/><b>Post Code:</b> ${element.postalCode}</li>`);
 					});
